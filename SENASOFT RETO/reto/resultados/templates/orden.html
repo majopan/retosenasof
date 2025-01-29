@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órdenes de Laboratorio</title>
+</head>
+<body>
+    <main>
+        {% if ordenes %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha de Orden</th>
+                        <th>Código de orden</th>
+                        <th>Número de Orden</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for orden in ordenes %}
+                        <tr>
+                            <td>{{ orden.fecha_orden }}</td>
+                            <td>{{ orden.codigo_documento }}</td>
+                            <td><a href="{% url 'mostrar_resultados' orden.id %}">{{ orden.numero_orden }}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay órdenes de laboratorio disponibles.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

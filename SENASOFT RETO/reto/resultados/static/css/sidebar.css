@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la ventana */
+}
+
+.sidebar {
+    position: relative; /* Cambiado de fixed a relative */
+    width: 250px;
+    background-color: #C4D7FF;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Asegúrate de que esté por encima del contenido */
+    overflow-y: auto; /* Habilita el desplazamiento si hay más contenido del que se muestra */
+}
+
+.sidebar a {
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: #aabfff;
+    transform: scale(1.05);
+}
+
+.logo {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin-left: 250px; /* Deja espacio para el menú */
+    padding: 20px;
+    width: calc(100% - 250px); /* Ajusta el ancho del contenido */
+    background-color: #fff; /* Fondo blanco para el contenido */
+    overflow-y: auto; /* Habilita el desplazamiento si el contenido es muy largo */
+}

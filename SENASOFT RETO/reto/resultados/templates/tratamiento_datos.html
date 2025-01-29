@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aceptación de Política de Datos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Política de Protección de Datos</h5>
+                <p class="card-text">
+                    De acuerdo con la Ley 1581 de 2012, le informamos que sus datos personales serán tratados con la máxima confidencialidad. 
+                    Al aceptar, consiente el tratamiento de su información, con nuestros servicios.
+                </p>
+                <button id="aceptarBtn" class="btn btn-primary">Aceptar</button>
+                <button id="cancelarBtn" class="btn btn-secondary" style="margin-top: 10px;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('aceptarBtn').addEventListener('click', function() {
+            window.location.href = '/pacientedashboard/'; // URL de destino al aceptar
+        });
+
+        document.getElementById('cancelarBtn').addEventListener('click', function() {
+            window.location.href = '{% url "paciente_login" %}'; // Redirigir a la URL de inicio de sesión
+        });
+    </script>
+</body>
+</html>

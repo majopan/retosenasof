@@ -1,0 +1,60 @@
+{% extends "navegacion.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Resultado de Laboratorio</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {% block css %}
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid rgba(0, 123, 255, 0.5); /* Borde azul claro */
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); /* Sombra azul */
+            max-width: 400px; /* Ancho máximo */
+            margin: auto; /* Centrar horizontalmente */
+        }
+        h1 {
+            color: #343a40;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <main class="container mt-5">
+        <div class="form-container">
+            <h1 class="text-center mb-4">Crear Resultado de Laboratorio</h1>
+            {% if messages %}
+                <div class="alert alert-info" role="alert">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p|safe }}  <!-- Renderiza el formulario con estilos -->
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Crear Resultado</button>
+            </form>
+        </div>
+    </main>
+    <!-- Enlace a Bootstrap JS (opcional, para funcionalidades adicionales) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% endblock %}
+</body>
+</html>

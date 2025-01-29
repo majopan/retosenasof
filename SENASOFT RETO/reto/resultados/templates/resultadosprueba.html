@@ -1,0 +1,61 @@
+{% extends "navegacion.html" %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Prueba</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-container {
+            width: 100%; /* Aseguramos que la tarjeta ocupe todo el ancho disponible */
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+
+    <div class="container mt-4">
+        <h1>Resultados de la Orden </h1>
+        
+        <!-- Tarjeta para el detalle de la orden -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Detalles del Paciente</h5>
+                <p><strong>Paciente:</strong> {{ orden.pacientes.nombre }} {{ orden.pacientes.apellido1 }} {{ orden.pacientes.apellido2 }}</p>
+                <p><strong>Fecha de la Orden:</strong> {{ orden.fecha_orden }}</p>
+                <p><strong>Tipo de Sangre:</strong> {{ orden.pacientes.grupo_sanguineo }}</p>
+            </div>
+        </div>
+
+        <h2>Resultados de Pruebas</h2>
+        <div class="row">
+            {% for resultado in resultados %}
+                <div class="col-md-12 mb-3"> <!-- Cambiar col-md-4 a col-md-12 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Prueba ID: {{ resultado.id }}</h5>
+                            <p class="card-text"><strong>Nombre de la Prueba:</strong> {{ resultado.procedimiento }}</p>
+                            <p class="card-text"><strong>Resultado:</strong> {{ resultado.resultado }}</p>
+                            <p class="card-text"><strong>Grupo Sanguíneo:</strong> {{ resultado.grupo_sanguineo }}</p>
+                            <p class="card-text"><strong>Fecha de Resultado:</strong> {{ resultado.fecha_resultado }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        No se encontraron resultados para esta orden.
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% endblock %}
+</body>
+</html>
